@@ -1,12 +1,14 @@
 import { yupResolver } from '@hookform/resolvers/yup'
 import React from 'react'
 import { useForm } from 'react-hook-form'
+import { Link } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import * as Yup from 'yup'
 
 import LoginImg from '../../assets/logo-image.svg'
 import Logo from '../../assets/logo.svg'
 import Button from '../../components/Button'
+import { useUser } from '../../hooks/UserContext'
 import api from '../../services/api'
 import {
   Container,
@@ -18,6 +20,8 @@ import {
   ErrorMessage
 } from './styles'
 const Login = () => {
+  const { putUserData } = useUser()
+
   const schema = Yup.object()
     .shape({
       email: Yup.string()
@@ -37,19 +41,22 @@ const Login = () => {
     resolver: yupResolver(schema)
   })
   const onSubmit = async clientData => {
-    const response = await toast.promise(
-      api.post('sessions', {
-        email: clientData.email,
-        password: clientData.password
-      }),
-      {
-        pending: 'Processando!',
-        success: 'Bem-vindo!',
-        error: 'Verifique seu Email e/ou Senha'
-      }
-    )
-
-    console.log(response)
+    try {
+      const { data } = await toast.promise(
+        api.post('sessions', {
+          email: clientData.email,
+          password: clientData.password
+        }),
+        {
+          pending: 'Processando!',
+          success: 'Bem-vindo!',
+          error: 'Verifique seu Email e/ou Senha'
+        }
+      )
+      putUserData(data)
+    } catch (error) {
+      //
+    }
   }
   return (
     <Container>
@@ -75,7 +82,10 @@ const Login = () => {
           <div style={{ marginTop: 75 }}>
             <Button type="submit">Entrar</Button>
             <SignLink style={{ marginTop: 25 }}>
-              Não possui conta? <a>Cadastre-se</a>
+              Não possui conta?{' '}
+              <Link style={{ color: 'white' }} to="/cadastro">
+                Cadastre-se
+              </Link>
             </SignLink>
           </div>
         </form>
