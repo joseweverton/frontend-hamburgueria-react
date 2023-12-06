@@ -1,7 +1,7 @@
 import { yupResolver } from '@hookform/resolvers/yup'
 import React from 'react'
 import { useForm } from 'react-hook-form'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import * as Yup from 'yup'
 
@@ -20,6 +20,7 @@ import {
   ErrorMessage
 } from './styles'
 const Login = () => {
+  const navigate = useNavigate()
   const { putUserData } = useUser()
 
   const schema = Yup.object()
@@ -54,6 +55,10 @@ const Login = () => {
         }
       )
       putUserData(data)
+
+      setTimeout(() => {
+        navigate('/')
+      }, 1000)
     } catch (error) {
       //
     }

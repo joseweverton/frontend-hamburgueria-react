@@ -31,7 +31,7 @@ export const ContainerItens = styled.div`
     font-weight: 500;
     line-height: normal;
     text-align: center;
-    margin-top: 100px;
+    margin-top: 40px;
   }
   div {
     display: flex;
