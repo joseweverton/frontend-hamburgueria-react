@@ -7,7 +7,7 @@ export const Container = styled.div`
   flex-direction: column;
   gap: 35px;
   padding: 40px 0;
-  background-color: #efefef;
+  background-color: #ffffff;
 
   .rec.rec-arrow {
     background-color: #9758a6;
@@ -34,11 +34,28 @@ export const CategoryImage = styled.img``
 export const ContainerItems = styled.div`
   display: flex;
   flex-direction: column;
+
+  p {
+    font-size: 18px;
+    font-style: normal;
+    font-weight: bold;
+    line-height: 120%;
+    color: #424242;
+  }
+  .description {
+    width: 200px;
+    height: 50px;
+  }
+
+  .price {
+    color: #1e81b0;
+  }
 `
 
 export const Image = styled.img`
   width: 200px;
   border-radius: 10px;
+  margin-bottom: 15px;
 `
 
 export const Button = styled.button`
