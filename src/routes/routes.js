@@ -3,6 +3,7 @@ import { Routes, Route, BrowserRouter as Router } from 'react-router-dom'
 
 import Home from '../containers/home'
 import Login from '../containers/login'
+import Product from '../containers/products'
 import Register from '../containers/register'
 import PrivateRoute from './private-routes'
 
@@ -15,6 +16,7 @@ function MyRoutes() {
 
         <Route element={<PrivateRoute />}>
           <Route element={<Home />} path="/" exact />
+          <Route element={<Product />} path="/produtos" />
         </Route>
       </Routes>
     </Router>
