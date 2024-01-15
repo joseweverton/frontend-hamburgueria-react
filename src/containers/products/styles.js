@@ -2,6 +2,7 @@ import styled from 'styled-components'
 
 export const Container = styled.div`
   background: #e5e5e5;
+  min-height: 100vh;
 `
 
 export const ProductsImg = styled.img`
@@ -19,8 +20,8 @@ export const CategoryButton = styled.button`
   cursor: pointer;
   background: none;
   border: none;
-  border-bottom: ${props => props.isActiveCategory && '2px solid #9758a6'};
-  color: ${props => (props.isActiveCategory ? '#9758a6' : '#9a9a9d')};
+  border-bottom: ${props => props.$isActiveCategory && '2px solid #9758a6'};
+  color: ${props => (props.$isActiveCategory ? '#9758a6' : '#9a9a9d')};
   padding-bottom: 5px;
 
   font-size: 24px;

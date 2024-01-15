@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 
 import ProductsLogo from '../../assets/product-logo.svg'
-import CardProducts from '../../components/CardsProducts'
+import { CardProducts } from '../../components'
 import api from '../../services/api'
 import formatCurrency from '../../utils/formatCurrency'
 import {
@@ -12,9 +12,10 @@ import {
   ProductsContainer
 } from './styles'
 
-function Product() {
+export function Product() {
   const [categories, setCategories] = useState([])
   const [products, setProducts] = useState([])
+  const [filteredProducts, setFilteredProducts] = useState([])
   const [activeCategory, setActiveCategory] = useState(0)
 
   useEffect(() => {
@@ -39,6 +40,18 @@ function Product() {
     loadCategories()
   }, [])
 
+  useEffect(() => {
+    if (activeCategory === 0) {
+      setFilteredProducts(products)
+    } else {
+      const newFilteredProducts = products.filter(
+        product => product.category_id === activeCategory
+      )
+
+      setFilteredProducts(newFilteredProducts)
+    }
+  }, [activeCategory, products])
+
   return (
     <Container>
       <ProductsImg src={ProductsLogo} alt="Logo da Home" />
@@ -49,7 +62,7 @@ function Product() {
             <CategoryButton
               type="button"
               key={category.id}
-              isActiveCategory={activeCategory === category.id}
+              $isActiveCategory={activeCategory === category.id}
               onClick={() => {
                 setActiveCategory(category.id)
               }}
@@ -59,13 +72,11 @@ function Product() {
           ))}
       </CategoryMenu>
       <ProductsContainer>
-        {products &&
-          products.map(product => (
+        {filteredProducts &&
+          filteredProducts.map(product => (
             <CardProducts key={product.id} product={product} />
           ))}
       </ProductsContainer>
     </Container>
   )
 }
-
-export default Product
