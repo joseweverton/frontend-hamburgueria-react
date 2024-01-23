@@ -32,6 +32,7 @@ export const Line = styled.div`
 `
 
 export const PageLinkExit = styled.a`
+  cursor: pointer;
   font-style: normal;
   font-weight: bold;
   font-size: 14px;
