@@ -8,6 +8,11 @@ export const Container = styled.div`
   flex-direction: row;
   justify-content: space-around;
   box-shadow: 2px 3px 5px rgba(0, 0, 0, 0.15);
+
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
 `
 export const ContainerLeft = styled.div`
   display: flex;
