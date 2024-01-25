@@ -57,7 +57,11 @@ export const Login = () => {
       putUserData(data)
 
       setTimeout(() => {
-        navigate('/')
+        if (data.admin) {
+          navigate('/pedidos')
+        } else {
+          navigate('/')
+        }
       }, 1000)
     } catch (error) {
       //

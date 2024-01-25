@@ -3,16 +3,20 @@ import React from 'react'
 import { Outlet, Navigate } from 'react-router-dom'
 
 import { Header } from '../components'
-function PrivateRoute({ element, ...rest }) {
+function PrivateRoute({ element, isAdmin, ...rest }) {
   const user = localStorage.getItem('codeBurger:userData')
 
   if (!user) {
     return <Navigate to="/login" />
   }
 
+  if (isAdmin && !JSON.parse(user).admin) {
+    return <Navigate to="/" />
+  }
+
   return (
     <>
-      <Header />
+      {!isAdmin && <Header />}
       <Outlet {...rest} element={element} />
     </>
   )
@@ -21,5 +25,6 @@ function PrivateRoute({ element, ...rest }) {
 export default PrivateRoute
 
 PrivateRoute.propTypes = {
-  element: PropTypes.oneOfType([PropTypes.func, PropTypes.element])
+  element: PropTypes.oneOfType([PropTypes.func, PropTypes.element]),
+  isAdmin: PropTypes.bool
 }
