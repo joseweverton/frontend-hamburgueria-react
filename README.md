@@ -1,13 +1,27 @@
-# Front-end: Hamburgueria (Em Desenvolvimento)
+# Front-end: Hamburgueria (Em Desenvolvimento - Concluíndo o painel administrativo)
 
-Aplicação completa de uma Hamburgueria desenvolvido em React que se integra ao backend e banco de dados para fornecer uma experiência completa aos usuários.
+Aplicação Web completa de uma Hamburgueria desenvolvido em React, integrado ao backend construído em NodeJS, com comunicação com bancos de dados.
 
-### Funcionalidades Principais
+O sistema permite simular todas as operações essenciais de uma hamburgueria, incluindo cadastro e autenticação de clientes, painel administrativo, carrinho de compras, cardápio dinâmico, categorias de produtos, itens em oferta e diversas outras funcionalidades.
 
-- Cardápio: Os usuários podem navegar pelo cardápio da hamburgueria, visualizando detalhes dos itens disponíveis.
+### Tecnologias utilizadas:
 
-- Pedidos: Capacidade de personalizar cada pedido de acordo com as preferências individuais dos usuários, como escolha de ingredientes, tamanho e extras.
+`→ HTML`
+`→ CSS3`
+`→ ReactJS`
+`→ react-hooks`
+`→ Styled-Components`
+`→ react-toastify`
+`→ react-router-dom`
+`→ context-api`
+`→ Yup`
+`→ Axios`
+`→ Express.js`
+`→ JWT`
+`→ Docker`
+`→ MongoDB`
+`→ PostgeSQL`
+`→ sequelize`
+`→ npm`
 
-- Carrinho de Compras: Os usuários podem adicionar itens ao carrinho de compras, revisar seus pedidos e realizar ajustes antes de finalizar a compra.
 
-- Autenticação de Usuário: Implementamos um sistema de autenticação para que os clientes possam criar contas, fazer login e rastrear seus históricos de pedidos.
